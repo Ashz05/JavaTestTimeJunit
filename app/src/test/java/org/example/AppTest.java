@@ -6,9 +6,10 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
+import java.util.Arrays;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
-import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class AppTest{
     App sorting;
     @BeforeEach
@@ -30,6 +31,15 @@ public class AppTest{
                 sorting.BubbleSort(5,4,2,1000,124,53,3,1,10,9,6,7,8,100,12,23,42,41,34,123,0));
     }
 
+    @Test void TestSelectionSort(){
+        int[] result = sorting.SelectionSort(100,50,1000,300,500,1500,200,150,900,950,1950);
+        int[] expected = {50,100,150,200,300,500,900,950,1000,1500,1950};
+
+        assertArrayEquals(expected,result);
+        assertTimeout(Duration.ofMillis(10), () -> sorting.BubbleSort(5,4,2,1000,124,53,3,1,10,9,6,7,8,100,12,23,42,41,34,123,0));
+
+
+    }
     @AfterEach
     void endAll(){
         System.out.println("After Test Cases...!");
